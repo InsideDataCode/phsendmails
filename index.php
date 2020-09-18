@@ -20,10 +20,10 @@
 
             <div class="col-md-5 w-50 m-4 mx-auto rounded border">
 
-                <form method="POST" action="send.php">
+                <form method="POST" action="send.php" name="fieldData" onsubmit="return validator();">
                     <div class="form-group">
                         <label for="mailto">Mail to </label>
-                        <input type="email" id="mailto" name="mailto" class="form-control">
+                        <input type="email" name="mailto" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="theme">Theme</label>
@@ -60,6 +60,15 @@
     
     const confirmer = () => {
         return confirm('Do you want to send this email ?');
+    }
+
+    let validator = () => {
+
+        let fieldData = document.forms['fieldData'];
+        if (fieldData.mailto.value === "") {
+            alert('The mail should be at least  typed !');
+            return false;
+        }
     }
 
 </script>
